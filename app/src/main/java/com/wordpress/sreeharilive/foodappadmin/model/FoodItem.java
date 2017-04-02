@@ -1,7 +1,9 @@
 package com.wordpress.sreeharilive.foodappadmin.model;
 
 
-public class FoodItem {
+import java.io.Serializable;
+
+public class FoodItem implements Serializable {
 
     private String itemName;
     private String category;
