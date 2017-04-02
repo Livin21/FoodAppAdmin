@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="2"
-    tools:context="com.wordpress.sreeharilive.foodappadmin.MainActivity">
+    tools:context="com.wordpress.sreeharilive.foodappadmin.activity.MainActivity">
 
     <ImageButton
         android:layout_width="match_parent"
