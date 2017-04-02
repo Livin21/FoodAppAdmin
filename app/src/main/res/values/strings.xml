@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FoodAppAdmin</string>
+    <string name="update_stock">Update Stock</string>
+    <string name="view_orders_button">View Orders Button</string>
+</resources>
