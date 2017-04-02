@@ -20,8 +20,8 @@ import java.util.ArrayList;
 
 public class UpdateStock extends AppCompatActivity {
 
-    Spinner categorySpinner =(Spinner)findViewById(R.id.categorySpinner);
-    Spinner itemSpinner =(Spinner)findViewById(R.id.itemSpinner);
+    Spinner categorySpinner;
+    Spinner itemSpinner;
 
     EditText quantityET;
 
@@ -32,9 +32,9 @@ public class UpdateStock extends AppCompatActivity {
     String currentCategoryArray[];
     String currentItemsArray[];
 
-    String chosenCategory;
-    String currentItemId;
-    int currentQty;
+    String chosenCategory = "";
+    String selectedItemId = "";
+    int currentQty = -500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,8 @@ public class UpdateStock extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
 
+                        categories = new ArrayList<>();
+
                         for (DataSnapshot child : dataSnapshot.getChildren()){
                             categories.add(child.getKey());
                         }
@@ -80,9 +82,9 @@ public class UpdateStock extends AppCompatActivity {
                     }
                 });
 
-        categorySpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 chosenCategory = currentCategoryArray[position];
                 progressDialog.show();
                 FirebaseDatabase.getInstance().getReference()
@@ -120,12 +122,17 @@ public class UpdateStock extends AppCompatActivity {
                             }
                         });
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
 
-        itemSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        itemSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItemId = itemIds.get(position);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedItemId = itemIds.get(position);
                 progressDialog.show();
                 FirebaseDatabase.getInstance().getReference()
                         .child("items")
@@ -134,10 +141,13 @@ public class UpdateStock extends AppCompatActivity {
                         .addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
-                                String qty = dataSnapshot.child("count").getValue().toString();
-                                quantityET.setEnabled(true);
-                                quantityET.setText(qty);
-                                progressDialog.dismiss();
+                                try {
+                                    String qty = dataSnapshot.child("count").getValue().toString();
+                                    currentQty = Integer.parseInt(qty);
+                                    quantityET.setEnabled(true);
+                                    quantityET.setText(qty);
+                                    progressDialog.dismiss();
+                                }catch (NullPointerException ignored){}
                             }
 
                             @Override
@@ -147,11 +157,36 @@ public class UpdateStock extends AppCompatActivity {
                             }
                         });
             }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
 
     }
 
     public void updateQuantity(View view) {
-
+        if (chosenCategory.isEmpty()){
+            Toast.makeText(this, "Choose Category", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (selectedItemId.isEmpty()){
+            Toast.makeText(this, "Choose Item", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int newQty = Integer.parseInt(quantityET.getText().toString());
+        if (newQty == currentQty){
+            Toast.makeText(this, "Change quantity to update", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        System.out.println("Item: " + selectedItemId + ", Qty: " + currentQty);
+        FirebaseDatabase.getInstance().getReference().child("items")
+                .child(chosenCategory)
+                .child(selectedItemId)
+                .child("count")
+                .setValue(newQty);
+        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

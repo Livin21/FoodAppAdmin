@@ -4,6 +4,6 @@
     <string name="view_orders_button">View Orders Button</string>
     <string name="category">Category</string>
     <string name="item">Item</string>
-    <string name="quantity_here">Quantity Here</string>
+    <string name="quantity_here">Quantity</string>
     <string name="update">Update</string>
 </resources>
