@@ -6,4 +6,11 @@
     <string name="item">Item</string>
     <string name="quantity_here">Quantity</string>
     <string name="update">Update</string>
+    <string name="user_id">User Id</string>
+    <string name="address">Address</string>
+    <string name="locality">Locality</string>
+    <string name="mode">Mode Of Payment</string>
+    <string name="order">Order:</string>
+    <string name="total">Total</string>
+    <string name="process_order">Process Order</string>
 </resources>

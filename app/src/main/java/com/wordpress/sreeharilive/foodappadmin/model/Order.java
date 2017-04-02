@@ -1,9 +1,10 @@
 package com.wordpress.sreeharilive.foodappadmin.model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Order {
+public class Order implements Serializable {
 
     private String address;
     private String locality;

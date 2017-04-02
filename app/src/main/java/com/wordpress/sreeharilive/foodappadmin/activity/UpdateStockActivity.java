@@ -18,7 +18,7 @@ import com.wordpress.sreeharilive.foodappadmin.R;
 
 import java.util.ArrayList;
 
-public class UpdateStock extends AppCompatActivity {
+public class UpdateStockActivity extends AppCompatActivity {
 
     Spinner categorySpinner;
     Spinner itemSpinner;
@@ -68,7 +68,7 @@ public class UpdateStock extends AppCompatActivity {
                         currentCategoryArray = new String[categories.size()];
                         categories.toArray(currentCategoryArray);
 
-                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(UpdateStock.this,android.R.layout.simple_spinner_item,currentCategoryArray);
+                        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(UpdateStockActivity.this,android.R.layout.simple_spinner_item,currentCategoryArray);
                         arrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
                         categorySpinner.setAdapter(arrayAdapter);
 
@@ -77,7 +77,7 @@ public class UpdateStock extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(UpdateStock.this, "Check Internet Connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateStockActivity.this, "Check Internet Connection", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
                 });
@@ -105,7 +105,7 @@ public class UpdateStock extends AppCompatActivity {
                                 currentItemsArray = new String[itemNames.size()];
                                 itemNames.toArray(currentItemsArray);
 
-                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(UpdateStock.this,android.R.layout.simple_spinner_item,currentItemsArray);
+                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(UpdateStockActivity.this,android.R.layout.simple_spinner_item,currentItemsArray);
                                 arrayAdapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
                                 itemSpinner.setAdapter(arrayAdapter);
 
@@ -118,7 +118,7 @@ public class UpdateStock extends AppCompatActivity {
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
                                 progressDialog.dismiss();
-                                Toast.makeText(UpdateStock.this, "Something Bad Happened", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UpdateStockActivity.this, "Something Bad Happened", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
@@ -152,7 +152,7 @@ public class UpdateStock extends AppCompatActivity {
 
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-                                Toast.makeText(UpdateStock.this, "Something Bad Happened", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UpdateStockActivity.this, "Something Bad Happened", Toast.LENGTH_SHORT).show();
                                 progressDialog.dismiss();
                             }
                         });

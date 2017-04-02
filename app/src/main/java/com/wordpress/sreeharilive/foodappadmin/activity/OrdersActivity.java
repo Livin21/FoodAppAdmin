@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class Orders extends AppCompatActivity {
+public class OrdersActivity extends AppCompatActivity {
 
     ArrayList<Order> orders;
 
@@ -32,7 +32,7 @@ public class Orders extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders);
 
-        getSupportActionBar().setTitle("Orders");
+        getSupportActionBar().setTitle("OrdersActivity");
 
         recyclerView = (RecyclerView) findViewById(R.id.ordersRecyclerView);
 
@@ -85,7 +85,7 @@ public class Orders extends AppCompatActivity {
                                 orders.add(order);
                             }catch (NullPointerException ignored){}
                         }
-                        Log.d("Orders",orders.toString());
+                        Log.d("OrdersActivity",orders.toString());
 
                         Collections.sort(
                                 orders,
@@ -104,7 +104,7 @@ public class Orders extends AppCompatActivity {
 
 
                         recyclerView.swapAdapter(
-                                new OrdersAdapter(Orders.this, orders),
+                                new OrdersAdapter(OrdersActivity.this, orders),
                                 true
                         );
 
@@ -114,7 +114,7 @@ public class Orders extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(Orders.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(OrdersActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
                 });

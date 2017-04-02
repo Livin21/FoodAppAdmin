@@ -49,14 +49,14 @@ public class MainActivity extends AppCompatActivity {
         showOrdersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,Orders.class));
+                startActivity(new Intent(MainActivity.this,OrdersActivity.class));
             }
         });
 
         updateStockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,UpdateStock.class));
+                startActivity(new Intent(MainActivity.this,UpdateStockActivity.class));
             }
         });
 

@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Orders" />
-        <activity android:name=".activity.UpdateStock"></activity>
+        <activity android:name=".activity.OrdersActivity" />
+        <activity android:name=".activity.UpdateStockActivity" />
+        <activity android:name=".activity.OrderDetailsActivity"></activity>
     </application>
 
 </manifest>
