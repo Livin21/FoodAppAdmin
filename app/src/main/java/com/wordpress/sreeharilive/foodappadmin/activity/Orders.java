@@ -20,7 +20,6 @@ import com.wordpress.sreeharilive.foodappadmin.model.Order;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 
 public class Orders extends AppCompatActivity {
 
@@ -32,6 +31,8 @@ public class Orders extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders);
+
+        getSupportActionBar().setTitle("Orders");
 
         recyclerView = (RecyclerView) findViewById(R.id.ordersRecyclerView);
 
