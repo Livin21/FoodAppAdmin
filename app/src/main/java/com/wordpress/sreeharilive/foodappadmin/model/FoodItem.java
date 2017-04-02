@@ -4,13 +4,15 @@ package com.wordpress.sreeharilive.foodappadmin.model;
 public class FoodItem {
 
     private String itemName;
-    private String itemPrice;
+    private String category;
     private String itemId;
+    private int qty;
 
-    public FoodItem(String itemName, String itemPrice, String itemId) {
+    public FoodItem(String itemName, String category, String itemId, int qty) {
         this.itemName = itemName;
-        this.itemPrice = itemPrice;
+        this.category = category;
         this.itemId = itemId;
+        this.qty = qty;
     }
 
     public String getItemName() {
@@ -21,12 +23,12 @@ public class FoodItem {
         this.itemName = itemName;
     }
 
-    public String getItemPrice() {
-        return itemPrice;
+    public String getCategory() {
+        return category;
     }
 
-    public void setItemPrice(String itemPrice) {
-        this.itemPrice = itemPrice;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getItemId() {
@@ -35,5 +37,9 @@ public class FoodItem {
 
     public void setItemId(String itemId) {
         this.itemId = itemId;
+    }
+
+    public int getQty() {
+        return qty;
     }
 }
