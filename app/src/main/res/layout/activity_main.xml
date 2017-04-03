@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="2"
+    android:weightSum="3"
     tools:context="com.wordpress.sreeharilive.foodappadmin.activity.MainActivity">
 
     <ImageButton
@@ -23,5 +23,15 @@
         android:id="@+id/updateStockButton"
         android:src="@mipmap/ic_launcher_round"
         android:contentDescription="@string/update_stock" />
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/processOrderButton"
+        android:src="@mipmap/ic_launcher_round"
+        android:contentDescription="@string/view_processed_orders"
+
+        />
+
 
 </LinearLayout>

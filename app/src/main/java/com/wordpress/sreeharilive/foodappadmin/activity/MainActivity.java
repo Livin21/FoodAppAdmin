@@ -15,6 +15,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.wordpress.sreeharilive.foodappadmin.R;
 
+import static com.wordpress.sreeharilive.foodappadmin.R.id.processOrderButton;
+
 public class MainActivity extends AppCompatActivity {
 
 
