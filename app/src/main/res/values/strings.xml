@@ -13,4 +13,7 @@
     <string name="order">Order:</string>
     <string name="total">Total</string>
     <string name="process_order">Process Order</string>
+    <string name="view_processed_orders">View Process Orders</string>
+
+
 </resources>

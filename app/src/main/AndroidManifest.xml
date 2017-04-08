@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".activity.OrdersActivity" />
         <activity android:name=".activity.UpdateStockActivity" />
-        <activity android:name=".activity.OrderDetailsActivity"></activity>
+        <activity android:name=".activity.OrderDetailsActivity" />
+        <activity android:name=".activity.ProcessOrderActivity"></activity>
     </application>
 
 </manifest>

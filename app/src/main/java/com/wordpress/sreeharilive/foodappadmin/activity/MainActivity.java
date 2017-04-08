@@ -15,6 +15,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.wordpress.sreeharilive.foodappadmin.R;
 
+import static com.wordpress.sreeharilive.foodappadmin.R.id.processOrderButton;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton showOrdersButton = (ImageButton) findViewById(R.id.showOrdersButton);
         ImageButton updateStockButton = (ImageButton) findViewById(R.id.updateStockButton);
+        ImageButton processOderButton =(ImageButton) findViewById(R.id.processOrderButton);
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Signing In");
@@ -57,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,UpdateStockActivity.class));
+            }
+        });
+        processOderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ProcessOrderActivity.class));
             }
         });
 
