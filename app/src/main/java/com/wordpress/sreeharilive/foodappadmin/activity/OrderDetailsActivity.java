@@ -60,7 +60,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
         orderRef.child("address").setValue(order.getAddress());
         orderRef.child("locality").setValue(order.getLocality());
         orderRef.child("mode_of_payment").setValue(order.getModeOfPayment());
-        orderRef.child("timestamp").setValue(order.getTimestamp());
+        orderRef.child("ordered_at").setValue(order.getTimestamp());
+        orderRef.child("delivered_at").setValue(System.currentTimeMillis());
         orderRef.child("userId").setValue(order.getUserID());
         for (FoodItem item : order.getItems()){
             DatabaseReference itemRef = orderRef.child("order")
@@ -75,7 +76,12 @@ public class OrderDetailsActivity extends AppCompatActivity {
                     .setValue(item.getQty());
         }
         orderRef.child("order").child("total").setValue(order.getTotal());
+
+        FirebaseDatabase.getInstance().getReference().child("users").child(order.getUserID()).child("pending_orders").child(order.getOrderID()).removeValue();
+        FirebaseDatabase.getInstance().getReference().child("users").child(order.getUserID()).child("delivered_orders").child(order.getOrderID()).child("orderedAt").setValue(order.getTimestamp());
+        FirebaseDatabase.getInstance().getReference().child("users").child(order.getUserID()).child("delivered_orders").child(order.getOrderID()).child("deliveredAt").setValue(System.currentTimeMillis());
         finish();
+
     }
 
     public String newId(){
