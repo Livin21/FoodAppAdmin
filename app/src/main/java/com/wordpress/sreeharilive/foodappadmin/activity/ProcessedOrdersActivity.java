@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class ProcessOrderActivity extends AppCompatActivity {
+public class ProcessedOrdersActivity extends AppCompatActivity {
 
     ArrayList<Order> orders;
 
@@ -104,7 +104,7 @@ public class ProcessOrderActivity extends AppCompatActivity {
 
 
                         recyclerView.swapAdapter(
-                                new OrdersAdapter(ProcessOrderActivity.this, orders),
+                                new OrdersAdapter(ProcessedOrdersActivity.this, orders),
                                 true
                         );
 
@@ -114,7 +114,7 @@ public class ProcessOrderActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(ProcessOrderActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProcessedOrdersActivity.this, "Please check your internet connection", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
                 });
