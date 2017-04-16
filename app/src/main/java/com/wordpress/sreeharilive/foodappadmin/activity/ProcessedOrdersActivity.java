@@ -61,7 +61,8 @@ public class ProcessedOrdersActivity extends AppCompatActivity {
                                 String orderId = child.getKey();
                                 String address = child.child("address").getValue().toString();
                                 String locality = child.child("locality").getValue().toString();
-                                long timestamp = Long.parseLong(child.child("timestamp").getValue().toString());
+                                long deliveryTimestamp = Long.parseLong(child.child("delivered_at").getValue().toString());
+                                long orderTimestamp = Long.parseLong(child.child("ordered_at").getValue().toString());
                                 String userId = child.child("userId").getValue().toString();
                                 double total = Double.parseDouble(child.child("order").child("total").getValue().toString());
                                 String modeOfPayment = child.child("mode_of_payment").getValue().toString();
@@ -81,7 +82,7 @@ public class ProcessedOrdersActivity extends AppCompatActivity {
                                     }
                                 }
 
-                                Order order = new Order(orderId,address,locality,userId,total,items,timestamp,modeOfPayment);
+                                Order order = new Order(orderId,address,locality,userId,total,items,deliveryTimestamp,modeOfPayment);
                                 orders.add(order);
                             }catch (NullPointerException ignored){}
                         }
